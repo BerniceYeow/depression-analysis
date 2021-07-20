@@ -93,13 +93,6 @@ my_file.close()
 #print(content_list)
 
 
-
-my_file = open("neutral_words2NEW.txt", "r", encoding="utf-8")
-content = my_file.read()
-content_listnu = content.split("\n")
-my_file.close()
-#print(content_list)
-
 my_file = open("negative_words2 rated 4 and 5NEW.txt", "r", encoding="utf-8")
 content = my_file.read()
 content_listdn = content.split("\n")
@@ -349,10 +342,6 @@ def app():
                         key1 = " " + key1
                         if key1 in df['Clean_Text'][i]:
                             positivescore  += 1
-                    for key2 in content_listnu:
-                        key2 = " " + key2
-                        if key2 in df['Clean_Text'][i]:
-                            neutralscore += 1
                     for key3 in content_listdn:
                         key3 = " " + key3
                         if key3 in df['Clean_Text'][i]:
@@ -362,7 +351,7 @@ def app():
                             df['score'][i] = 'depressed'
                         else:
                             df['score'][i] = 'not depressed'
-                    if positivescore <= 0 and negativescore <= 0 and neutralscore <= 0:
+                    if positivescore <= 0 and negativescore <= 0:
                         df['score'][i] = "N/A"
                     if df['score'][i] != 'depressed' and df['score'][i] != 'not depressed' and df['score'][i] != 'N/A':
                         df['score'][i] = "N/A"
@@ -455,10 +444,6 @@ def app():
                         key1 = " " + key1
                         if key1 in df['Clean_Text'][i]:
                             positivescore  += 1
-                    for key2 in content_listnu:
-                        key2 = " " + key2
-                        if key2 in df['Clean_Text'][i]:
-                            neutralscore += 1
                     for key3 in content_listdn:
                         key3 = " " + key3
                         if key3 in df['Clean_Text'][i]:
@@ -545,10 +530,6 @@ def app():
                         key1 = " " + key1
                         if key1 in df['Clean_Text'][i]:
                             positivescore  += 1
-                    for key2 in content_listnu:
-                        key2 = " " + key2
-                        if key2 in df['Clean_Text'][i]:
-                            neutralscore += 1
                     for key3 in content_listdn:
                         key3 = " " + key3
                         if key3 in df['Clean_Text'][i]:
