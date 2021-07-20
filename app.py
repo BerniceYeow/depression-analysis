@@ -116,7 +116,6 @@ contraction_dict = {"ain't": "is not", "aren't": "are not","can't": "cannot", "'
 
 
 
-from gensim.parsing.preprocessing import remove_stopwords
 def replace_word(text):
     urlPattern = r"((http://)[^ ]*|(https://)[^ ]*|( www\.)[^ ]*|[^ ]*(\.com)|[^ ]*(\.my)|(http...))"
     userPattern = r"@[^\s]+"
@@ -153,7 +152,7 @@ def replace_word(text):
                 
 
                 
-    #text = remove_stopwords(text)
+
     x = 0
     for i in text:      
         
