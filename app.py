@@ -447,7 +447,7 @@ def app():
 
             st.write(sns.countplot(x=df["Type of tweets"],data=df))
 
-            st.set_option('deprecation.showPyplotGlobalUse', False)
+            #st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(use_container_width=True)
 
         else:
