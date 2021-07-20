@@ -320,7 +320,7 @@ def app():
                             df['score'][i] = 'depressed'
                         else:
                             df['score'][i] = 'not depressed'
-                    if positivescore <= 0 and negativescore <= 0:
+                    if positivescore <= 0 and negativescore <= 0 and definitenegativescore <= 0:
                         df['score'][i] = "N/A"
                     if df['score'][i] != 'depressed' and df['score'][i] != 'not depressed' and df['score'][i] != 'N/A':
                         df['score'][i] = "N/A"
@@ -431,21 +431,21 @@ def app():
 
                 def getAnalysis(score):
                   if score == 1:
-                    return 'Positive'
+                    return 'Depressive'
                   elif score == 0:
-                    return 'Negative'
+                    return 'Not depressive'
                   else:
                     return 'N/A'
                     
-                df['Type of tweets'] = df['score'].apply(getAnalysis)
+                df['Type_of_tweets'] = df['score'].apply(getAnalysis)
                 return df
 
             
             df= Plot_Analysis()
 
+            df = df[df.Type_of_tweets.isin(["Depressive", "Not depressive"])]
 
-
-            st.write(sns.countplot(x=df["Type of tweets"],data=df))
+            st.write(sns.countplot(x=df["Type_of_tweets"],data=df))
 
             #st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(use_container_width=True)
@@ -474,8 +474,8 @@ def app():
                 
                 df['score'] = ""
                 
-                df['positive'] = ""
-                df['negative'] = ""
+                df['Not depressive'] = ""
+                df['Depressive'] = ""
                 df['definitenegativescore'] = ""
                 
                 negativescore = 0
@@ -508,8 +508,8 @@ def app():
                     #     df['score'][i] = "N/A"
                     # if df['score'][i] != 'depressed' and df['score'][i] != 'not depressed' and df['score'][i] != 'N/A':
                     #     df['score'][i] = "N/A"
-                    df['positive'][i] = positivescore
-                    df['negative'][i] = negativescore + definitenegativescore
+                    df['Not depressive'][i] = positivescore
+                    df['Depressive'][i] = negativescore + definitenegativescore
                  #df = df.drop(columns=['definitenegativescore'])
                  #df['definitenegativescore'][i] = definitenegativescore
 
@@ -521,7 +521,7 @@ def app():
             
 
             
-            df = df.drop(columns=['Tweets',"Clean_Text","definitenegativescore"])
+            df = df.drop(columns=['Tweets',"Clean_Text","definitenegativescore","score"])
             df = df.rename(columns={'date':'index'}).set_index('index')
             st.line_chart(df)
 
