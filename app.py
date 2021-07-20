@@ -290,8 +290,8 @@ def app():
                 
                 df['score'] = ""
                 
-                df['no_of_positive_words'] = ""
-                df['no_of_negative_words'] = ""
+                df['no_of_non_depressive_words'] = ""
+                df['no_of_depressive_words'] = ""
                 df['definitenegativescore'] = ""
                 
                 negativescore = 0
@@ -324,8 +324,8 @@ def app():
                         df['score'][i] = "N/A"
                     if df['score'][i] != 'depressed' and df['score'][i] != 'not depressed' and df['score'][i] != 'N/A':
                         df['score'][i] = "N/A"
-                    df['no_of_positive_words'][i] = positivescore
-                    df['no_of_negative_words'][i] = negativescore + definitenegativescore
+                    df['no_of_non_depressive_words'][i] = positivescore
+                    df['no_of_depressive_words'][i] = negativescore + definitenegativescore
                     
                     #df['definitenegativescore'][i] = definitenegativescore
     
