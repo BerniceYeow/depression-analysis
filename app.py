@@ -23,10 +23,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 
 
-import en_core_web_sm
-spacy_nlp = en_core_web_sm.load()
 
-#spacy_nlp = spacy.load('en_core_web_sm')
 lemmatizer = WordNetLemmatizer()
 english_stemmer = PorterStemmer()
 #english_corrector = SpellChecker()
@@ -300,13 +297,11 @@ def app():
                 
                 negativescore = 0
                 positivescore = 0
-                neutralscore = 0
                 definitenegativescore = 0
                 
                 for i in range(len(df)):
                     negativescore = 0
                     positivescore = 0
-                    neutralscore = 0
                     definitenegativescore = 0
                     for key in content_listn:
                         key = " " + key
@@ -402,13 +397,11 @@ def app():
                 
                 negativescore = 0
                 positivescore = 0
-                neutralscore = 0
                 definitenegativescore = 0
                 
                 for i in range(len(df)):
                     negativescore = 0
                     positivescore = 0
-                    neutralscore = 0
                     definitenegativescore = 0
                     for key in content_listn:
                         key = " " + key
@@ -488,13 +481,11 @@ def app():
                 
                 negativescore = 0
                 positivescore = 0
-                neutralscore = 0
                 definitenegativescore = 0
                 
                 for i in range(len(df)):
                     negativescore = 0
                     positivescore = 0
-                    neutralscore = 0
                     definitenegativescore = 0
                     for key in content_listn:
                         key = " " + key
