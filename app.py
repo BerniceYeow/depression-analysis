@@ -1,7 +1,7 @@
 
 import streamlit as st
 import tweepy
-from textblob import TextBlob
+
 from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
@@ -13,25 +13,15 @@ import seaborn as sns
 from ekphrasis.classes.preprocessor import TextPreProcessor
 from ekphrasis.classes.tokenizer import SocialTokenizer
 
-import json
-import re
-import numpy as np
-import pandas as pd
-
 import ftfy
-from emot.emo_unicode import UNICODE_EMO, EMOTICONS
-from nltk.corpus import stopwords
-from nltk.tokenize import WordPunctTokenizer
+
 from nltk.stem import PorterStemmer
-import spacy
+
 #from spellchecker import SpellChecker
 import nltk
-from nltk.corpus import wordnet
+
 from nltk.stem import WordNetLemmatizer
-import json
-import pandas as pd
-import re
-import numpy as np
+
 
 import en_core_web_sm
 spacy_nlp = en_core_web_sm.load()
@@ -41,26 +31,11 @@ lemmatizer = WordNetLemmatizer()
 english_stemmer = PorterStemmer()
 #english_corrector = SpellChecker()
 
-from nltk.tokenize import WordPunctTokenizer
-token = WordPunctTokenizer()
 
-import pandas as pd
-
-import os
-import re
-import pandas as pd
-#from stop_words import get_stop_words
-import nltk
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 nltk.download('stopwords')
-from nltk.corpus import stopwords
-import matplotlib.pyplot as pls
-import numpy as np
 
-
-import requests
-from bs4 import BeautifulSoup
 text_processor = TextPreProcessor(
     # terms that will be annotated
     annotate={ "allcaps", "elongated", "repeated",'emphasis'},

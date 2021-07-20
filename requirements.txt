@@ -84,3 +84,5 @@ webencodings==0.5.1
 widgetsnbextension==3.5.1
 wincertstore==0.2
 wordcloud==1.7.0
+ftfy==6.0.3
+ekphrasis==0.5.1
