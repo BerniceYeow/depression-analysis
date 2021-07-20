@@ -261,7 +261,7 @@ def app():
 
 
 
-    Analyzer_choice = st.selectbox("Select the Activities",  ["Show Recent Tweets","Generate WordCloud" ,"Visualize result","Depression state across time"])
+    Analyzer_choice = st.selectbox("Select the Activities",  ["Show Recent Tweets","Generate WordCloud" ,"Types of tweets","Depression state across time","interaction"])
 
 
     if st.button("Analyze"):
@@ -362,7 +362,7 @@ def app():
 
 
 
-        elif Analyzer_choice=="Visualize result":
+        elif Analyzer_choice=="Types of tweets":
 
 
 
@@ -450,7 +450,7 @@ def app():
             #st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot(use_container_width=True)
 
-        else:
+        elif Analyzer_choice=="Depression state across time":
             def Plot_Analysis():
 
                 st.success("Generating Visualisation")
@@ -528,11 +528,46 @@ def app():
             #df = df.set_index('date')
             #ax = df.plot(secondary_y='Sentiment')
 
+        else:
 
+            st.success("Generating Visualisation")
+            posts = api.user_timeline(screen_name=raw_text, count = 100, lang ="en", tweet_mode="extended")
 
+            df = pd.DataFrame([tweet.full_text for tweet in posts], columns=['Tweets'])
+            
+            import re
+            new_list1 = []
+            new_list = []
+            for i in df.Tweets:
+                result = re.findall("@([a-zA-Z0-9]{1,15})", i)
+                new_list1.append(result)
 
+            #for i in range(len(new_list)):
+                #j = new_list[i]
+                #j = str(j)
+                #j = j.replace(',', ' ')
+                #new_list[i]=j.split()
+            
+            for i in new_list1:
+                if ',' not in str(i):
+                    new_list.append(str(i))
+                else:
+                    for x in i:
+                        new_list.append(str(x))
+            
+            new_list = [s.replace("[", "") for s in new_list]
+            new_list = [s.replace("]", "") for s in new_list]
+            new_list = [s.replace("'", "") for s in new_list]
 
+            new_list = filter(None, new_list)
 
+            import collections
+            counter=collections.Counter(new_list)
+            
+            df1= pd.DataFrame()
+            df1['user'] = counter.keys()
+            df1['no_of_times_mentioned']= counter.values()
+            df1
     st.subheader(' ------------------------Created By :  Bernice Yeow ---------------------- :sunglasses:')
 
 
